@@ -10,7 +10,7 @@ def get_html(url):
         print(f"Error al obtener, el código de estado es {response.status_code}")
         return None
 
-def get_content_by_class_and_testid(html):
+def get_product_price(html):
     soup = BeautifulSoup(html, "html.parser")
     # Buscar todos los elementos <span> con el data-testid="paris-text"
     tags = soup.find_all("span", {"data-testid": "paris-text"})
@@ -26,6 +26,6 @@ def get_content_by_class_and_testid(html):
 
 html = get_html("https://nuevo.paris.cl/zapatillas-urbana-cuero-knu-skool-unisex-614258.html")
 if html:
-    get_content_by_class_and_testid(html)
+    get_product_price(html)
 else:
     print("No se pudo obtener el HTML")
